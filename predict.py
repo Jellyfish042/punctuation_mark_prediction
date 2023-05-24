@@ -11,8 +11,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained("./models/checkpoint-20000/").to(d
 
 while True:
     test_data = [input('Sentence:')]
-    # test_data = ["你好 我是李沐", "都什么年代了 还在抽传统香烟", '不许你说丁真 他是我的偶像',
-    #              '我们的价值观是 富强 民主 文明 和谐', '这是一个句子 这个句子在此结束']
+    # test_data = ["猪笼草原产于热带和亚热带地区 现主要分布在东南亚一带 中国广东 广西等地有分布 猪笼草喜欢湿润和温暖半阴的生长环境 不耐寒 怕积水 怕强光 怕干燥 喜欢疏松 肥沃和透气的腐叶土和泥炭土 对光照要求较为严格 猪笼草的繁殖方式包括扦插繁殖 压条繁殖和播种繁殖"]
     inputs = [re.sub(r'\s+', ' ', x) for x in test_data]
 
     # Tokenize and prepare the inputs for model
