@@ -7,7 +7,7 @@ import torch
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load trained model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained("google/mt5-small")
-model = AutoModelForSeq2SeqLM.from_pretrained("./models/checkpoint-2500/").to(device)
+model = AutoModelForSeq2SeqLM.from_pretrained("./models/checkpoint-12500/").to(device)
 
 print('test')
 while True:
