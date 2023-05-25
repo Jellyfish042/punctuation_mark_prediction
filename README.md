@@ -24,11 +24,11 @@ train_on_wiki.py 旧训练代码
 - 我一开始纯在Wikipedia数据集上训练，发现效果不理想，然后又动手构造了一个包含Wikipedia和Amazon评论的新数据集，在上面微调。（为什么不重新训练而是微调呢？因为没钱）
 - 训练Loss
 
-![wiki](pt.PNG)
+![](pt.PNG)
 
 <center>在Wikipedia上预训练</center>
 
-![wiki](ft.PNG)
+![](ft.PNG)
 
 <center>在Wikipedia+Amazon评论数据集上微调</center>
 
