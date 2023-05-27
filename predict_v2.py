@@ -1,20 +1,18 @@
 # 用于测试模型输出
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import string
 import re
 import torch
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load trained model and tokenizer
+path = "./models/checkpoint-15000/"
 tokenizer = AutoTokenizer.from_pretrained("google/mt5-small")
-model = AutoModelForSeq2SeqLM.from_pretrained("./models/checkpoint-15000/").to(device)
+model = AutoModelForSeq2SeqLM.from_pretrained(path).to(device)
 
 print('test')
 while True:
     text = input('Sentence:')
-    text = text + ' ' if text[-2:] != ' ' else text  # 在末尾加上空格有利于模型预测
-    test_data = [text]
-    inputs = [re.sub(r'\s+', ' ', x) for x in test_data]
+    inputs = [text.replace(' ', '')]
 
     # Tokenize and prepare the inputs for model
     input_ids = tokenizer(inputs, return_tensors="pt", max_length=512,
