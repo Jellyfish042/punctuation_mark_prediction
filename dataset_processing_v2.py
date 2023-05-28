@@ -69,8 +69,8 @@ wiki = datasets.load_dataset('wikipedia', date='20230301', language='zh', beam_r
 amazon = datasets.load_dataset('amazon_reviews_multi', 'zh', split='train')
 
 # 切片（如果你不想用全部数据的话）
-# wiki = wiki[:50]
-# amazon = amazon[:100]
+wiki = wiki[:50]
+amazon = amazon[:100]
 
 # 将数据集拼成新数据集
 datalist = []
