@@ -10,11 +10,13 @@ predict.py 用于测试预测效果
 
 dataset_processing.py 用于预处理数据集
 
+dataset_processing_v2.py 更好的数据预处理
+
 support.py 支持函数
 
 count.py 用于统计数据集中每个句子平均有多少个token，根据统计数据更科学地构建训练数据
 
-train_on_wiki.py 旧训练代码
+peft_finetune.py 使用LoRA进行微调
 
 ### 训练须知
 以下是我在测试时候使用的配置
