@@ -99,6 +99,6 @@ new_ds = datasets.Dataset.from_dict({'text': random_sentences})
 # 预处理，构造训练样本对
 new_ds = new_ds.map(preprocess_function, batched=True)
 # 保存数据集
-file_path = './datasets/amazon_and_wiki_tiny'
+file_path = './datasets/amazon_and_wiki_tiny'  # 在此设定数据集的保存路径
 new_ds.save_to_disk(file_path)
 print(f'数据集已保存至{file_path}')

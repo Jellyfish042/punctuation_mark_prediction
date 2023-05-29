@@ -5,7 +5,7 @@ import torch
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load trained model and tokenizer
-path = "./models/checkpoint-30000/"
+path = "./models/checkpoint-30000/"  # 此处修改为你的模型路径
 tokenizer = AutoTokenizer.from_pretrained("google/mt5-small")
 model = AutoModelForSeq2SeqLM.from_pretrained(path).to(device)
 

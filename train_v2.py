@@ -4,7 +4,8 @@ from datasets import load_from_disk
 from support import *
 
 # 加载数据集
-dataset = load_from_disk('./datasets/amazon_and_wiki_full')
+path = './datasets/amazon_and_wiki_full'  # 此处写你的数据集路径
+dataset = load_from_disk(path)
 # 数据集分割
 train_ds, val_ds = data_split(dataset, 0.05)
 print(train_ds, val_ds)

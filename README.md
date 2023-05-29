@@ -2,29 +2,27 @@
 ### 项目说明
 本项目旨在训练一个mT5模型，用于为无标点句子标标点，用于语音识别模型的后处理。
 
-### 文件说明
+### 使用说明
 
 train_v2.py 用于训练
 
-predict.py 用于测试预测效果
+predict_v2.py 用于测试预测效果
 
-dataset_processing.py 用于预处理数据集
-
-dataset_processing_v2.py 更好的数据预处理
+dataset_processing_v2.py 用于数据预处理
 
 support.py 支持函数
 
 count.py 用于统计数据集中每个句子平均有多少个token，根据统计数据更科学地构建训练数据
 
-peft_finetune.py 使用LoRA进行微调
+peft_finetune.py 使用LoRA进行训练
 
-### 训练须知
+### 训练笔记
 以下是我在测试时候使用的配置
-- 默认训练配置为small模型，batchsize=6，每16步更新一次参数，所以总批量大小是96。
-- 使用Wikipedia中文数据集中的50万个样本和亚马逊评论数据集的训练集混合。
+- 默认训练配置为small模型，batchsize=6，每16步更新一次参数，所以总批量大小是96。请根据你的显存大小选择合适的batchsize和梯度累加步数。
+- 使用Wikipedia中文数据集和亚马逊评论数据集的训练集混合。
 - 这个配置下占用23GB显存，在3090上约2天跑完1个epoch。
-- 我一开始纯在Wikipedia数据集上训练，发现效果不理想，然后又动手构造了一个包含Wikipedia和Amazon评论的新数据集，在上面微调。（为什么不重新训练而是微调呢？因为没钱）
-- 训练Loss
+- 使用LoRA训练大约加速20%，显存省一半。
+- 训练Loss如下（不使用LoRA）
 
 ![](curve.PNG)
 
