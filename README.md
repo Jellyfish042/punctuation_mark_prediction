@@ -26,11 +26,11 @@ peft_finetune.py 使用LoRA进行训练
 
 ![](curve.PNG)
 
-<center>训练Loss曲线</center>
+<div align="center">训练Loss曲线</div>
 
 ![](number.PNG)
 
-<center>40k steps后的Loss</center>
+<div align="center">训练Loss</div>
 
 ### 以下记录下要注意的地方
 
