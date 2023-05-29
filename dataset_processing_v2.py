@@ -1,4 +1,3 @@
-# 主要是将空格删除了，预测的时候需要空格太蠢了，这样更通用。
 # 更好的数据清洗（虽然只改了一点，但是清洗得好得多）
 import datasets
 import string
@@ -17,7 +16,7 @@ def replace_punctuation_with_space(s):
     # 创建一个正则表达式模式，匹配所有标点符号
     pattern = '[' + string.punctuation + '。，“”‘’！？【】：；……、（）《》·「」 ]'
     # 将标点符号替换为一个空格，并保留换行符
-    return re.sub(pattern, '', s)
+    return re.sub(pattern, ' ', s)
 
 
 def preprocess_function(examples):
