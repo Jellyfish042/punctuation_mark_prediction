@@ -5,7 +5,9 @@ from transformers import AutoTokenizer
 from tqdm import tqdm
 import random
 import re
+import os
 
+os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 def replace_punctuation_with_space(s):
     '''
@@ -16,7 +18,8 @@ def replace_punctuation_with_space(s):
     # 创建一个正则表达式模式，匹配所有标点符号
     pattern = '[' + string.punctuation + '。，“”‘’！？【】：；……、（）《》·「」 ]'
     # 将标点符号替换为一个空格，并保留换行符
-    return re.sub(pattern, ' ', s)
+    s = re.sub(pattern, ' ', s)
+    return s
 
 
 def preprocess_function(examples):
@@ -68,8 +71,8 @@ wiki = datasets.load_dataset('wikipedia', date='20230301', language='zh', beam_r
 amazon = datasets.load_dataset('amazon_reviews_multi', 'zh', split='train')
 
 # 切片（如果你不想用全部数据的话）
-wiki = wiki[:50]
-amazon = amazon[:100]
+# wiki = wiki[:50]
+# amazon = amazon[:100]
 
 # 将数据集拼成新数据集
 datalist = []
@@ -99,6 +102,6 @@ new_ds = datasets.Dataset.from_dict({'text': random_sentences})
 # 预处理，构造训练样本对
 new_ds = new_ds.map(preprocess_function, batched=True)
 # 保存数据集
-file_path = './datasets/amazon_and_wiki_tiny'  # 在此设定数据集的保存路径
+file_path = './datasets/amazon_and_wiki_full'  # 在此设定数据集的保存路径
 new_ds.save_to_disk(file_path)
 print(f'数据集已保存至{file_path}')
